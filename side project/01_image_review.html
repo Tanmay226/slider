@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMAGE REVIEW</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        .container {
+            width: 100vw;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgb(230, 202, 202);
+        }
+
+        .container .box {
+            width: 400px;
+            height: 400px;
+
+        }
+
+        .container .box #img {
+            height: 100%;
+            width: 100%;
+
+        }
+
+        #input {
+            width: 400px;
+            height: 40px;
+            border: 1px solid blue;
+            padding: 6px;
+            margin: 10px;
+            color: rgb(93, 66, 66);
+            font-size: 15px;
+            border-radius: 15px;
+        }
+/* -webkit is not support edge opera, only support chorme , sufary, */
+        input::-webkit-file-upload-button {
+
+            color: rgb(148, 98, 98);
+            font-family: sans-serif;
+            font-size: 19px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="box">
+            <!-- <img src="./img/1.png" id="img" alt=""> -->
+
+            <video controls>
+                <source id="img" src="./img/simple banner video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <input type="file" id="input">
+    </div>
+
+
+    <script>
+        let img = document.getElementById("img");
+        let input = document.getElementById("input");
+
+        // console.log(input)
+
+        input.onchange = () => {
+            if (input.files[0]) {
+                img.src = URL.createObjectURL(input.files[0]);
+            }
+
+        };
+        
+    </script>
+</body>
+
+</html>

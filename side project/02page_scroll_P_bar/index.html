@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page scroll and Progress Bar </title>
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+
+        }
+
+
+        .menu-item {
+            text-align: center;
+            background: #000;
+        }
+
+        .menu-item ul {
+            display: inline-flex;
+            list-style: none;
+            color: #ffff;
+
+
+        }
+
+        .menu-item ul li {
+            width: 125px;
+            padding: 19px 8px;
+            margin: 7px;
+            text-transform: capitalize;
+            transition: all 0.4s ease-out;
+
+        }
+
+        .active,
+        .menu-item ul li:hover {
+            background: #ffff;
+            border-radius: 5px;
+        }
+
+        .fa-solid {
+            margin-right: 8px;
+        }
+
+        /* Set hovering effect */
+        .sub-menu {
+            display: none;
+        }
+
+        .menu-item ul li:hover .sub-menu {
+            display: block;
+            position: absolute;
+            margin: 15px 0 0 -15px;
+            background: #000;
+        }
+
+        .menu-item ul li:hover .sub-menu ul {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .menu-item ul li:hover .sub-menu ul li {
+            width: 150px;
+            padding: 10px;
+            border-bottom: 1px solid #ffff;
+            background: transparent;
+            border-radius: 0;
+        }
+
+        .menu-item ul li:hover .sub-menu ul li:hover {
+            background: white;
+            border-bottom: 1px dotted #ffff;
+            color: red;
+
+
+        }
+
+        .menu-item ul li:hover .sub-menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item ul li:hover .sub-menu ul li a:hover {
+            color: red;
+        }
+
+        .fa-angle-right {
+            float: right;
+        }
+
+        .sub-menu1,
+        .sub-menu2 {
+            display: none;
+        }
+
+        .hover-me:hover .sub-menu1,
+        .hover-me1:hover .sub-menu2 {
+            display: block;
+            position: absolute;
+            margin: -40px 0 0 140px;
+            background: #000;
+
+        }
+
+
+        .container {
+            background: url(./about-img.jpeg) center no-repeat aliceblue;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .container1 {
+            background: url(./about-img.jpeg) center no-repeat aliceblue;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            color: white;
+            padding: 4rem;
+            margin: 0 auto;
+        }
+
+        .progress {
+            height: 10px;
+            background: #000;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        .progress-highlight {
+            transition: width 0.15s linear;
+            background: #03c4a1;
+            height: 100%;
+            width: 10%;
+        }
+
+        footer {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="menu-item">
+        <ul>
+            <li class="active"> <a href=""> <i class="fa-solid fa-house"></i> home </a> </li>
+            <li> <a href=""> <i class="fa-solid fa-user"></i> About</a>
+                <div class="sub-menu">
+                    <ul>
+                        <li><a href="">Mission</a></li>
+                        <li><a href="">Vision</a></li>
+                        <li><a href="">Team</a></li>
+                    </ul>
+                </div>
+
+
+
+
+            </li>
+            <li> <a href=""> <i class="fa-solid fa-clone"></i> Service </a>
+                <div class="sub-menu">
+                    <ul>
+                        <li><a href="">Web Designing</a></li>
+                        <li class="hover-me"><a href="">Marketing</a> <i class="fa-solid fa-angle-right"></i>
+
+                            <div class="sub-menu1">
+                                <ul>
+                                    <li><a href="">SEO</a></li>
+                                    <li><a href="">Social Media</a></li>
+                                    <li><a href="">Email Marketing</a></li>
+                                </ul>
+                            </div>
+
+
+
+                        </li>
+                        <li class="hover-me"><a href="">Mobile App</a><i class="fa-solid fa-angle-right"></i>
+                            <div class="sub-menu1">
+                                <ul>
+                                    <li><a href="">Android</a></li>
+                                    <li><a href="">IOS</a></li>
+                                    <li><a href="">Ionic App</a></li>
+                                    <li><a href="">Flutter App</a></li>
+                                    <li class="hover-me1"><a href="">Unity App</a><i class="fa-solid fa-angle-right">
+                                        </i>
+
+                                        <div class="sub-menu2">
+                                            <ul>
+                                                <li><a href="">Simple</a></li>
+                                                <li><a href="">Moderate</a></li>
+                                                <li><a href="">Complex</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </li>
+            <li> <a href=""> <i class="fa-solid fa-users"></i> Client </a> </li>
+            <li> <a href=""> <i class="fa-solid fa-angellist"></i> investigator </a> </li>
+            <li> <a href=""> <i class="fa-solid fa-inr"></i> pricinng </a> </li>
+            <li> <a href=""> <i class="fa-solid fa-edit"></i> Training </a> </li>
+            <li> <a href=""> <i class="fa-solid fa-phone"></i> Contact </a> </li>
+
+
+        </ul>
+
+    </nav>
+    <div class="container">
+        <div class="progress">
+            <div class="progress-highlight" id="js-hightlight">
+            </div>
+        </div>
+
+    </div>
+    <div id="js-container">
+
+
+        <div class="container1">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit voluptatibus ipsa dicta culpa
+            dolorem, consequatur suscipit fugiat sit minus laudantium maiores tenetur! Impedit modi ipsam vero
+            doloremque quisquam porro autem ducimus saepe assumenda neque. Possimus consequuntur ratione quibusdam,
+            alias minima magnam modi culpa mollitia rerum excepturi? Officia voluptate aperiam quod dolor quasi
+            assumenda ut nam vero dignissimos vel quo minus, expedita placeat fuga odit ab sint mollitia saepe. Placeat
+            voluptas dignissimos pariatur obcaecati deleniti, quod optio quae officia dolorum eius? Eligendi asperiores
+            soluta odit nobis voluptatibus ratione nostrum quia, neque explicabo, delectus aliquam in excepturi ab
+            consequuntur praesentium atque non. Voluptate libero, veniam voluptates eaque reiciendis corrupti beatae
+            nostrum quam dolorem sit facere in eius neque sed. Doloribus inventore aspernatur laudantium iste modi, ipsa
+            vero? Deleniti veniam natus sit delectus modi minus repudiandae deserunt quas similique placeat tempora iure
+            dignissimos odit corrupti quisquam, officiis non sint, vitae eos sapiente maxime nam ea odio saepe? Quo quam
+            officia, est architecto consequatur dolore accusantium optio ratione numquam esse sit libero, magnam
+            asperiores doloremque aut vitae deserunt molestias ex. Nemo assumenda rerum facilis alias quo distinctio
+            optio labore atque officia excepturi quis, veniam vitae tempore mollitia molestias explicabo. Molestiae,
+            neque! Nulla et deserunt molestias tempore. Nostrum incidunt magnam aliquid eaque ipsum a accusantium sequi
+            aperiam cupiditate. Nobis assumenda enim ipsa corporis nulla eum, doloribus explicabo optio unde ipsum omnis
+            quibusdam, minus, pariatur eius animi voluptatem minima. Quos explicabo natus dolorem vero atque ut nihil
+            molestias eius numquam facilis sapiente aspernatur asperiores animi pariatur, in quas tempore sunt placeat?
+            Iusto iure voluptates temporibus quasi in molestias ratione possimus quis eveniet error. Laudantium possimus
+            doloremque exercitationem, placeat nobis eveniet vero ipsam voluptates fugiat sapiente fugit hic accusantium
+            aliquam assumenda repudiandae voluptatum perspiciatis iusto optio animi iure perferendis amet quae.
+            Temporibus repudiandae, enim ducimus voluptates libero fuga sapiente cum nobis nostrum quibusdam voluptatem
+            ipsum odio veritatis quae accusamus unde consectetur magnam, alias ex porro ipsa eligendi repellendus
+            accusantium. Rerum dolore enim libero, nulla ipsum ipsa iste est provident omnis eveniet aut et quisquam non
+            sit facere atque unde error eum fugiat mollitia ea corporis consectetur? Pariatur, rerum voluptas! Sequi
+            tempore officiis, accusamus culpa cum modi tempora, dolor cupiditate mollitia corrupti incidunt unde facere
+            sed voluptatum eligendi necessitatibus perferendis sint ad magni est. Non laborum, voluptatem placeat,
+            repellendus voluptatibus necessitatibus soluta quisquam illo sit ducimus veritatis delectus laudantium
+            excepturi architecto aliquam, corporis distinctio velit deleniti id magnam nesciunt minima exercitationem
+            nisi vel. Excepturi ducimus, obcaecati laborum molestias eos placeat aspernatur harum natus. Maiores soluta
+            unde ratione omnis dolore deleniti rerum sit fugit id explicabo a, expedita itaque, iste officiis delectus
+            dignissimos dolores fuga ipsa? Voluptas quas, facere quod laboriosam nobis fugit aperiam obcaecati,
+            cupiditate commodi mollitia quis ab sed iusto perspiciatis molestias dolor atque excepturi, nam fugiat.
+            Molestiae consequuntur, natus quibusdam, cupiditate error voluptas optio cum, animi consequatur porro alias
+            ex? Quam error ea porro inventore laboriosam saepe fugit, velit, incidunt est ipsa dolor aliquam ullam cum,
+            eos laborum hic possimus. Esse voluptatum atque laboriosam porro asperiores! Sequi, rerum! Architecto
+            debitis est hic. Laboriosam distinctio vero, reprehenderit neque quisquam, culpa nostrum, facere ut ducimus
+            illo labore. Nulla laboriosam blanditiis soluta aliquam, voluptate dolore adipisci magnam assumenda iure
+            facilis molestias repudiandae ab eum? Temporibus veniam placeat eum, cupiditate molestiae exercitationem eos
+            cum optio fugit expedita nam, harum doloremque reiciendis repellendus rem libero asperiores sed! Deleniti
+            atque cumque ipsum incidunt odit fuga magni sed provident?
+        </div>
+        <div class="container1">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit voluptatibus ipsa dicta culpa
+            dolorem, consequatur suscipit fugiat sit minus laudantium maiores tenetur! Impedit modi ipsam vero
+            doloremque quisquam porro autem ducimus saepe assumenda neque. Possimus consequuntur ratione quibusdam,
+            alias minima magnam modi culpa mollitia rerum excepturi? Officia voluptate aperiam quod dolor quasi
+            assumenda ut nam vero dignissimos vel quo minus, expedita placeat fuga odit ab sint mollitia saepe. Placeat
+            voluptas dignissimos pariatur obcaecati deleniti, quod optio quae officia dolorum eius? Eligendi asperiores
+            soluta odit nobis voluptatibus ratione nostrum quia, neque explicabo, delectus aliquam in excepturi ab
+            consequuntur praesentium atque non. Voluptate libero, veniam voluptates eaque reiciendis corrupti beatae
+            nostrum quam dolorem sit facere in eius neque sed. Doloribus inventore aspernatur laudantium iste modi, ipsa
+            vero? Deleniti veniam natus sit delectus modi minus repudiandae deserunt quas similique placeat tempora iure
+            dignissimos odit corrupti quisquam, officiis non sint, vitae eos sapiente maxime nam ea odio saepe? Quo quam
+            officia, est architecto consequatur dolore accusantium optio ratione numquam esse sit libero, magnam
+            asperiores doloremque aut vitae deserunt molestias ex. Nemo assumenda rerum facilis alias quo distinctio
+            optio labore atque officia excepturi quis, veniam vitae tempore mollitia molestias explicabo. Molestiae,
+            neque! Nulla et deserunt molestias tempore. Nostrum incidunt magnam aliquid eaque ipsum a accusantium sequi
+            aperiam cupiditate. Nobis assumenda enim ipsa corporis nulla eum, doloribus explicabo optio unde ipsum omnis
+            quibusdam, minus, pariatur eius animi voluptatem minima. Quos explicabo natus dolorem vero atque ut nihil
+            molestias eius numquam facilis sapiente aspernatur asperiores animi pariatur, in quas tempore sunt placeat?
+            Iusto iure voluptates temporibus quasi in molestias ratione possimus quis eveniet error. Laudantium possimus
+            doloremque exercitationem, placeat nobis eveniet vero ipsam voluptates fugiat sapiente fugit hic accusantium
+            aliquam assumenda repudiandae voluptatum perspiciatis iusto optio animi iure perferendis amet quae.
+            Temporibus repudiandae, enim ducimus voluptates libero fuga sapiente cum nobis nostrum quibusdam voluptatem
+            ipsum odio veritatis quae accusamus unde consectetur magnam, alias ex porro ipsa eligendi repellendus
+            accusantium. Rerum dolore enim libero, nulla ipsum ipsa iste est provident omnis eveniet aut et quisquam non
+            sit facere atque unde error eum fugiat mollitia ea corporis consectetur? Pariatur, rerum voluptas! Sequi
+            tempore officiis, accusamus culpa cum modi tempora, dolor cupiditate mollitia corrupti incidunt unde facere
+            sed voluptatum eligendi necessitatibus perferendis sint ad magni est. Non laborum, voluptatem placeat,
+            repellendus voluptatibus necessitatibus soluta quisquam illo sit ducimus veritatis delectus laudantium
+            excepturi architecto aliquam, corporis distinctio velit deleniti id magnam nesciunt minima exercitationem
+            nisi vel. Excepturi ducimus, obcaecati laborum molestias eos placeat aspernatur harum natus. Maiores soluta
+            unde ratione omnis dolore deleniti rerum sit fugit id explicabo a, expedita itaque, iste officiis delectus
+            dignissimos dolores fuga ipsa? Voluptas quas, facere quod laboriosam nobis fugit aperiam obcaecati,
+            cupiditate commodi mollitia quis ab sed iusto perspiciatis molestias dolor atque excepturi, nam fugiat.
+            Molestiae consequuntur, natus quibusdam, cupiditate error voluptas optio cum, animi consequatur porro alias
+            ex? Quam error ea porro inventore laboriosam saepe fugit, velit, incidunt est ipsa dolor aliquam ullam cum,
+            eos laborum hic possimus. Esse voluptatum atque laboriosam porro asperiores! Sequi, rerum! Architecto
+            debitis est hic. Laboriosam distinctio vero, reprehenderit neque quisquam, culpa nostrum, facere ut ducimus
+            illo labore. Nulla laboriosam blanditiis soluta aliquam, voluptate dolore adipisci magnam assumenda iure
+            facilis molestias repudiandae ab eum? Temporibus veniam placeat eum, cupiditate molestiae exercitationem eos
+            cum optio fugit expedita nam, harum doloremque reiciendis repellendus rem libero asperiores sed! Deleniti
+            atque cumque ipsum incidunt odit fuga magni sed provident?
+        </div>
+        <div class="container1">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit voluptatibus ipsa dicta culpa
+            dolorem, consequatur suscipit fugiat sit minus laudantium maiores tenetur! Impedit modi ipsam vero
+            doloremque quisquam porro autem ducimus saepe assumenda neque. Possimus consequuntur ratione quibusdam,
+            alias minima magnam modi culpa mollitia rerum excepturi? Officia voluptate aperiam quod dolor quasi
+            assumenda ut nam vero dignissimos vel quo minus, expedita placeat fuga odit ab sint mollitia saepe. Placeat
+            voluptas dignissimos pariatur obcaecati deleniti, quod optio quae officia dolorum eius? Eligendi asperiores
+            soluta odit nobis voluptatibus ratione nostrum quia, neque explicabo, delectus aliquam in excepturi ab
+            consequuntur praesentium atque non. Voluptate libero, veniam voluptates eaque reiciendis corrupti beatae
+            nostrum quam dolorem sit facere in eius neque sed. Doloribus inventore aspernatur laudantium iste modi, ipsa
+            vero? Deleniti veniam natus sit delectus modi minus repudiandae deserunt quas similique placeat tempora iure
+            dignissimos odit corrupti quisquam, officiis non sint, vitae eos sapiente maxime nam ea odio saepe? Quo quam
+            officia, est architecto consequatur dolore accusantium optio ratione numquam esse sit libero, magnam
+            asperiores doloremque aut vitae deserunt molestias ex. Nemo assumenda rerum facilis alias quo distinctio
+            optio labore atque officia excepturi quis, veniam vitae tempore mollitia molestias explicabo. Molestiae,
+            neque! Nulla et deserunt molestias tempore. Nostrum incidunt magnam aliquid eaque ipsum a accusantium sequi
+            aperiam cupiditate. Nobis assumenda enim ipsa corporis nulla eum, doloribus explicabo optio unde ipsum omnis
+            quibusdam, minus, pariatur eius animi voluptatem minima. Quos explicabo natus dolorem vero atque ut nihil
+            molestias eius numquam facilis sapiente aspernatur asperiores animi pariatur, in quas tempore sunt placeat?
+            Iusto iure voluptates temporibus quasi in molestias ratione possimus quis eveniet error. Laudantium possimus
+            doloremque exercitationem, placeat nobis eveniet vero ipsam voluptates fugiat sapiente fugit hic accusantium
+            aliquam assumenda repudiandae voluptatum perspiciatis iusto optio animi iure perferendis amet quae.
+            Temporibus repudiandae, enim ducimus voluptates libero fuga sapiente cum nobis nostrum quibusdam voluptatem
+            ipsum odio veritatis quae accusamus unde consectetur magnam, alias ex porro ipsa eligendi repellendus
+            accusantium. Rerum dolore enim libero, nulla ipsum ipsa iste est provident omnis eveniet aut et quisquam non
+            sit facere atque unde error eum fugiat mollitia ea corporis consectetur? Pariatur, rerum voluptas! Sequi
+            tempore officiis, accusamus culpa cum modi tempora, dolor cupiditate mollitia corrupti incidunt unde facere
+            sed voluptatum eligendi necessitatibus perferendis sint ad magni est. Non laborum, voluptatem placeat,
+            repellendus voluptatibus necessitatibus soluta quisquam illo sit ducimus veritatis delectus laudantium
+            excepturi architecto aliquam, corporis distinctio velit deleniti id magnam nesciunt minima exercitationem
+            nisi vel. Excepturi ducimus, obcaecati laborum molestias eos placeat aspernatur harum natus. Maiores soluta
+            unde ratione omnis dolore deleniti rerum sit fugit id explicabo a, expedita itaque, iste officiis delectus
+            dignissimos dolores fuga ipsa? Voluptas quas, facere quod laboriosam nobis fugit aperiam obcaecati,
+            cupiditate commodi mollitia quis ab sed iusto perspiciatis molestias dolor atque excepturi, nam fugiat.
+            Molestiae consequuntur, natus quibusdam, cupiditate error voluptas optio cum, animi consequatur porro alias
+            ex? Quam error ea porro inventore laboriosam saepe fugit, velit, incidunt est ipsa dolor aliquam ullam cum,
+            eos laborum hic possimus. Esse voluptatum atque laboriosam porro asperiores! Sequi, rerum! Architecto
+            debitis est hic. Laboriosam distinctio vero, reprehenderit neque quisquam, culpa nostrum, facere ut ducimus
+            illo labore. Nulla laboriosam blanditiis soluta aliquam, voluptate dolore adipisci magnam assumenda iure
+            facilis molestias repudiandae ab eum? Temporibus veniam placeat eum, cupiditate molestiae exercitationem eos
+            cum optio fugit expedita nam, harum doloremque reiciendis repellendus rem libero asperiores sed! Deleniti
+            atque cumque ipsum incidunt odit fuga magni sed provident?
+        </div>
+    </div>
+    <footer>
+        <p> @learn with tanmay </p>
+    </footer>
+
+    <script>
+        const container = document.getElementById("js-container");
+        const highlight = document.getElementById("js-hightlight");
+        var containerHeight;
+
+        // console.log(highlight)
+
+        // window.onscroll = function () {
+        //     containerHeight = container.offsetHeight - window.innerHeight; //646 tigger
+        //     containerPos = container.getBoundingClientRect(); //relative value given and give an array
+
+        //     diff = containerHeight + containerPos.top; //dynamic value
+        //     progressPercentege = diff / containerHeight * 100;//dynamic value
+        //     cssWidth = Math.floor(100 - progressPercentege);
+        //     console.log(cssWidth);
+        //     highlight.style.width = cssWidth + "%";
+        // }
+        // var height = window.innerHeight;
+        // console.log(height)
+
+
+        // different methods
+
+var totalHeight = document.body.scrollHeight - window.innerHeight;//2174
+
+window.onscroll = function(){
+    var progress = (window.pageYOffset / totalHeight) *100;
+
+            highlight.style.width = progress + "%";
+
+            console.log(progress)
+}
+
+
+
+    </script>
+</body>
+
+</html>
